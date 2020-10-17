@@ -3,17 +3,16 @@ version: '3'
 services: 
   
   spring-docker-service:
-   
     build:
       context: ./app-server/Docker
       dockerfile: Dockerfile
-    expose:
-      - "8080"
+    ports:
+      - "8080:8080"
     
   angular-docker-service:
- 
-    build:
+    build: 
       context: ./app-ui
       dockerfile: Dockerfile
-    expose:
-      - "4200"
+    ports:
+      - "4200:4200"
+   
