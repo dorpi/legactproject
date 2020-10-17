@@ -1,0 +1,27 @@
+<div class="card my-5">
+  <div class="card-body">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Inventory number</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of items">
+          <td>  <a routerLink="/item/{{item.id}}" [state]="{ id: item.id }" >{{ item.id }}</a></td>
+          <td>{{ item.name }}</td>
+          <td>{{item.amount}}</td>
+          <td>{{ item.inventory_no }}</td>
+          <td class="text-center"><a routerLink="/edit-item/"[state]="{ id: item.id }" class="btn btn-dark">Edit</a></td>
+          <td class="text-center"><button (click)="onDelete(item.id)" class="btn btn-danger">Delete</button></td>
+
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

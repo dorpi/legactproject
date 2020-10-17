@@ -1,0 +1,53 @@
+<div class="card my-5">
+  <div class="card-body">
+    <div  *ngIf="alertService.show"class="alert alert-danger" role="alert">{{alertService.message}}</div>
+
+    <form (ngSubmit)="onSubmit()" #itemForm="ngForm">
+
+      <div class="form-group">
+        <label for="inventory_no">Id Number</label>
+        <input type="text" [(ngModel)]="item.id"
+          class="form-control"
+          id="id"
+          name="id"
+
+          placeholder="Enter Inventory Number for this item"
+          required #id="ngModel"
+          [disabled]="true">
+
+      </div>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" [(ngModel)]="item.name"
+          class="form-control"
+          id="name"
+          name="name"
+          placeholder="Enter your name"
+          required #name="ngModel">
+      </div>
+      <div [hidden]="item.name" class="alert alert-danger">Name is required</div>
+      <div class="form-group">
+        <label for="inventory_no">Inventory Number</label>
+        <input type="text" [(ngModel)]="item.inventory_no"
+          class="form-control"
+          id="inventory_no"
+          name="inventory_no"
+          placeholder="Enter inventory number for this item"
+          required #inventory_no="ngModel">
+        <div [hidden]="item.inventory_no" class="alert alert-danger">Inventory Number is required</div>
+      </div>
+      <div class="form-group">
+        <label for="amount">Amount</label>
+        <input type="text" [(ngModel)]="item.amount"
+          class="form-control"
+          id="amount"
+          name="amount"
+          placeholder="Enter amount  for this item"
+          required #amount="ngModel">
+        <div [hidden]="item.amount" class="alert alert-danger">Amount is required</div>
+      </div>
+      <button type="submit" [disabled]="!itemForm.form.valid"
+        class="btn btn-info">Submit</button>
+    </form>
+  </div>
+</div>
